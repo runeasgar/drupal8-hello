@@ -1,0 +1,4 @@
+services:
+  hello.text:
+    class: Drupal\hello\HelloText
+    arguments: ['@config.factory', '@current_user']

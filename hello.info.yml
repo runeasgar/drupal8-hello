@@ -1,0 +1,9 @@
+# https://drupal.org/node/1953342 (Conversion Guide)
+# http://previousnext.com.au/blog/drupal-8-ready-whats-new-developers
+name: Hello
+description: Says hello, and a few other things.
+core: 8.x
+type: module
+dependencies:
+  - user
+configure: admin/config/hello/settings

@@ -1,0 +1,13 @@
+hello.home:
+  path: 'hello'
+  defaults:
+    _content: '\Drupal\hello\Controller\HelloController::hello'
+  requirements:
+    _permission: 'be greeted'
+
+hello.settings:
+  path: '/admin/config/hello/settings'
+  defaults:
+    _form: '\Drupal\hello\Form\HelloConfigForm'
+  requirements:
+    _permission: 'administer hello'

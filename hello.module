@@ -1,0 +1,25 @@
+<?php
+
+function hello_menu() {
+  $items['hello'] = array(
+    'title' => 'What can I say?',
+    'route_name' => 'hello.home'
+  );
+  // Using admin/config here will add it to the config menu.
+  $items['admin/config/hello/settings'] = array(
+    'title' => 'Hello Settings',
+    'route_name' => 'hello.settings'
+  );
+  return $items;
+}
+
+function hello_permission() {
+  return array(
+    'be greeted' => array(
+      'title' => t('Be greeted'),
+    ),
+    'administer hello' => array(
+      'title' => t('Administer Hello'),
+    ),
+  );
+}
