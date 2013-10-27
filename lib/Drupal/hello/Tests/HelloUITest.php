@@ -36,22 +36,30 @@ class HelloUITest extends WebTestBase {
   function testHelloHome() {
     $this->drupalLogin($this->web_user);
     $this->drupalGet("hello");
-    $this->assertText('Hello, ');
+    $this->assertText('Hello, ' $this->web_user->getUsername());
   }
 
   function testHelloBlock() {
     $this->drupalLogin($this->admin_user);
     $this->drupalPlaceBlock('hello_block');
     $this->drupalGet("/");
-    $this->assertText('Hello, ');
+    $this->assertText('Hello, ' . $this->admin_user->getUsername());
   }
 
   function testHelloAdmin() {
     $this->drupalLogin($this->admin_user);
     $this->drupalGet('admin/config/hello/settings');
-    $this->drupalPostForm(NULL, array('show_username' => '0'), t('Save configuration'));
+    $this->assertFieldByName('show_username', '0');
     $this->drupalGet("hello");
     $this->assertText('Hello, world!'); // STOPPED HERE
+    $this->drupalGet('admin/config/hello/settings');
+    $this->drupalPostForm(NULL, array('show_username' => '1'), t('Save configuration'));
+    $this->assertFieldByName('show_username', '1');
+    $this->drupalGet("hello");
+    $this->assertText('Hello, ' . $this->admin_user->getUsername());
+    $this->drupalPlaceBlock('hello_block');
+    $this->drupalGet("/");
+    $this->assertText('Hello, ' .  . $this->admin_user->getUsername());
   }
 
   function testPantsConfiguration() {
