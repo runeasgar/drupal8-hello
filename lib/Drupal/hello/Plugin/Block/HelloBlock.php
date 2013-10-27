@@ -3,8 +3,6 @@
 namespace Drupal\hello\Plugin\Block;
 
 use Drupal\block\BlockBase;
-use Drupal\block\Annotation\Block;
-use Drupal\Core\Annotation\Translation;
 
 /**
  * Provides a 'Hello Block' block.
@@ -23,10 +21,11 @@ class HelloBlock extends BlockBase {
   }
 
   public function build() {
+    // This is NOT BEST PRACTICE - but BlockBase doesn't have simple dependency injection yet?
+    $helloText = \Drupal::service('hello.text');
     return array(
       'greeting' => array(
-        // ViewsBlockBase.php has a potential method..
-        '#markup' => 'This should really use the service.. but how??',
+        '#markup' => $helloText->getText(),
       ),
     );
   }
