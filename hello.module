@@ -23,3 +23,12 @@ function hello_permission() {
     ),
   );
 }
+
+function hello_theme() {
+  return array(
+    'hello_greeting' => array(
+      'variables' => array('example' => 'This text is supplied by a template variable.'),
+      'template' => 'hello-greeting',
+    ),
+  );
+}

@@ -21,7 +21,15 @@ class HelloController implements ContainerInjectionInterface {
 
   public function hello(Request $request) {
     // We could use the request object here if we wanted!
-    return $this->helloText->getText();
+    $page = array(
+      'greeting' => array(
+        '#markup' => $this->helloText->getText(),
+      ),
+      'extra' => array(
+         '#theme' => 'hello_greeting',
+      ),
+    );
+    return $page;
   }
 
 }
