@@ -18,11 +18,14 @@ class HelloText {
   }
 
   public function getText() {
+    $hello_language_manager = Drupal::service('plugin.manager.hello.hello_language');
+    $hello_language_instance = $hello_language_manager->createInstance($this->config->get('hello.settings')->get('hello_language'));
+    $helloTranslation = $hello_language_instance->helloTranslation();
     if ($this->config->get('hello.settings')->get('show_username') == 0) {
       $extra = "world";
     } else {
       $extra = $this->user->getUsername();
     }
-    return 'Hello, ' . $extra . '!';
+    return $helloTranslation . ', ' . $extra . '!';
   }
 }

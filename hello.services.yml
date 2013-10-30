@@ -2,3 +2,6 @@ services:
   hello.text:
     class: Drupal\hello\HelloText
     arguments: ['@config.factory', '@current_user']
+  plugin.manager.hello.hello_language:
+    class: Drupal\hello\HelloLanguageManager
+    arguments: ['@container.namespaces', '@cache.cache', '@language_manager', '@module_handler']
