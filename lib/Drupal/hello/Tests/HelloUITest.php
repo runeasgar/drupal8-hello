@@ -36,13 +36,14 @@ class HelloUITest extends WebTestBase {
   function testHelloHome() {
     $this->drupalLogin($this->web_user);
     $this->drupalGet('hello');
-    $this->assertText('Hello, ' . $this->web_user->getUsername());
+    $this->assertText('Hello, bob' . $this->web_user->getUsername());
   }
 
   function testHelloBlock() {
     $this->drupalLogin($this->admin_user);
     $this->drupalPlaceBlock('hello_block');
     $this->drupalGet('');
+    $this->assertFieldById()
     $this->assertText('Hello, ' . $this->admin_user->getUsername());
   }
 
