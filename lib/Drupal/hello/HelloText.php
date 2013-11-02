@@ -3,7 +3,6 @@
 namespace Drupal\hello;
 
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\Session\UserSession;
 
 class HelloText {
 
@@ -12,7 +11,8 @@ class HelloText {
 
   protected $text;
 
-  public function __construct(ConfigFactory $config, UserSession $user) {
+  // Not type-hinting UserSession or User here because it seems the service is being provided both at different times.
+  public function __construct(ConfigFactory $config, $user) {
     $this->config = $config;
     $this->user = $user;
   }
