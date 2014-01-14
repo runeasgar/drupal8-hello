@@ -29,6 +29,7 @@ class HelloUITest extends WebTestBase {
     $this->drupalLogin($this->web_user);
     $this->drupalGet('hello');
     $this->assertText('Hello, ' . $this->web_user->getUsername());
+    $this->assertRaw('<strong> And hello example theme variable for twig! </strong>');
   }
 
   function testHelloBlock() {
@@ -57,6 +58,10 @@ class HelloUITest extends WebTestBase {
     $this->drupalGet("hello");
     $this->assertText('Hello, world!');
 
+  }
+
+  function testHelloPlugin() {
+    // Write one! Test for the showing of plugins and for changing plugins.
   }
 
 }
