@@ -8,15 +8,7 @@ class HelloUITest extends WebTestBase {
 
   protected $profile = 'testing';
   public static $modules = array('hello', 'block');
-
-  /**
-   * Standard test user.
-   */
   protected $web_user;
-
-  /**
-   * An admin user.
-   */
   protected $admin_user;
 
   public static function getInfo() {
@@ -29,8 +21,8 @@ class HelloUITest extends WebTestBase {
 
   function setUp() {
     parent::setUp();
-    $this->web_user = $this->drupalCreateUser(array('be greeted'));
-    $this->admin_user = $this->drupalCreateUser(array('be greeted', 'administer blocks', 'administer hello'));
+    $this->web_user = $this->drupalCreateUser();
+    $this->admin_user = $this->drupalCreateUser(array('administer blocks', 'administer hello'));
   }
 
   function testHelloHome() {

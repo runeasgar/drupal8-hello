@@ -15,9 +15,6 @@ function hello_menu() {
 
 function hello_permission() {
   return array(
-    'be greeted' => array(
-      'title' => t('Be greeted'),
-    ),
     'administer hello' => array(
       'title' => t('Administer Hello'),
     ),

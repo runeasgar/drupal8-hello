@@ -3,7 +3,7 @@ hello.home:
   defaults:
     _content: '\Drupal\hello\Controller\HelloController::hello'
   requirements:
-    _permission: 'be greeted'
+    _access_hello_be_greeted: 'TRUE'
 
 hello.settings:
   path: '/admin/config/hello/settings'
