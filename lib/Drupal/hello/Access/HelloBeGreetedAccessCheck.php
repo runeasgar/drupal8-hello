@@ -2,15 +2,15 @@
 
 namespace Drupal\hello\Access;
 
-use Drupal\Core\Access\StaticAccessCheckInterface;
+use Drupal\Core\Access\AccessCheckInterface;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class HelloBeGreetedAccessCheck implements StaticAccessCheckInterface {
+class HelloBeGreetedAccessCheck implements AccessCheckInterface {
 
   // This is roughly the equivalent of getFormID?
-  public function appliesTo() {
+  public function applies(Route $route) {
     return array('_access_hello_be_greeted');
   }
 
