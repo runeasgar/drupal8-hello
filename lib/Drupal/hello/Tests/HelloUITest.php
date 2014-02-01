@@ -27,8 +27,14 @@ class HelloUITest extends WebTestBase {
 
   function testHelloHome() {
     $this->drupalLogin($this->web_user);
-    $this->drupalGet('hello');
+    $this->drupalGet('hello/something');
     $this->assertText('Hello, ' . $this->web_user->getUsername());
+    $this->assertText('Also, this unsanitized URL string: something.');
+  }
+
+  function testHelloTwig() {
+    $this->drupalLogin($this->web_user);
+    $this->drupalGet('hello/something');
     $this->assertRaw('<strong> And hello example theme variable for twig! </strong>');
   }
 
@@ -43,25 +49,28 @@ class HelloUITest extends WebTestBase {
     $this->drupalLogin($this->admin_user);
 
     $this->drupalGet('admin/config/hello/settings');
-    //$this->assertFieldByName('show_username', '1');
     $this->assertFieldChecked('edit-show-username');
-    $this->drupalGet('hello');
+    $this->drupalGet('hello/something');
     $this->assertText('Hello, ' . $this->admin_user->getUsername());
 
     $this->drupalPlaceBlock('hello_block');
-    $this->drupalGet("");
+    $this->drupalGet('');
     $this->assertText('Hello, ' . $this->admin_user->getUsername());
 
     $this->drupalGet('admin/config/hello/settings');
     $this->drupalPostForm(NULL, array('show_username' => false), t('Save configuration'));
     $this->assertNoFieldChecked('edit-show-username');
-    $this->drupalGet("hello");
+    $this->drupalGet('hello/something');
     $this->assertText('Hello, world!');
 
   }
 
   function testHelloPlugin() {
     // Write one! Test for the showing of plugins and for changing plugins.
+  }
+
+  function testRouteVariable() {
+    // Write one!
   }
 
 }

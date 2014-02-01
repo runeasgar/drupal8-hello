@@ -1,5 +1,5 @@
 hello.home:
-  path: 'hello'
+  path: 'hello/{variable}'
   defaults:
     _content: '\Drupal\hello\Controller\HelloController::hello'
   requirements:

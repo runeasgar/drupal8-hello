@@ -19,11 +19,14 @@ class HelloController implements ContainerInjectionInterface {
     return new static($container->get('hello.text'));
   }
 
-  public function hello(Request $request) {
-    // We could use the request object here if we wanted!
+  public function hello($variable) {
+    // We could use the request object here if we wanted! Just add Request $request to the arguments.
     $page = array(
       'greeting' => array(
         '#markup' => $this->helloText->getText(),
+      ),
+      'variable' => array(
+        '#markup' => '<br />Also, this unsanitized URL string: ' . $variable . '.',
       ),
       'extra' => array(
          '#theme' => 'hello_greeting',

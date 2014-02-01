@@ -1,7 +1,8 @@
 <?php
 
 function hello_menu() {
-  $items['hello'] = array(
+  // Doesn't show up even if set to hello/something
+  $items['hello/{variable}'] = array(
     'title' => 'What can I say?',
     'route_name' => 'hello.home'
   );
